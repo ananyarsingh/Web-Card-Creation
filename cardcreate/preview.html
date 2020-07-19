@@ -1,0 +1,58 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+<style type="text/css">
+    .canvas__container {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.canvas__canvas {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.canvas__mirror {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; 
+}
+</style>
+</head>
+<body>
+   <div class="canvas__container">
+  <canvas id="cnvs" class="canvas__canvas"></canvas>
+  <img src="images.png" id="mirror" class="canvas__mirror" />
+</div>
+<script type="text/javascript">
+    var cnvs = document.getElementById('cnvs'),
+    ctx = cnvs.getContext('2d'),
+    mirror = document.getElementById('mirror');
+
+
+cnvs.width = mirror.width = window.innerWidth;
+cnvs.height = mirror.height = window.innerHeight;
+
+mirror.addEventListener('contextmenu', function (e) { });
+mirror.addEventListener('contextmenu', function (e) {
+    var dataURL = canvas.toDataURL('image/png');
+    mirror.src = dataURL;
+});
+</script>
+
+
+<a href="#" class="button" id="btn-download">Download</a>
+<script type="text/javascript">
+    var button = document.getElementById('btn-download');
+button.addEventListener('click', function (e) {
+    var dataURL = canvas.toDataURL('image/png');
+    button.href = dataURL;
+});
+</script>
+<a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="Demo to show Move feature inside a container" />
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+<script src=" https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/autoresize.jquery.js"></script>
+<meta charset=utf-8 />
+    <title>
+        Card creation
+    </title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js"></script>
+
+  <style id="compiled-css" type="text/css">
+      .bold { font-weight: bold; }
+      .italic{ font-style: italic; }
+      .underline{text-decoration: underline;}
+      .la{text-align: left;}
+      .ra{text-align: right;}
+      .ca{text-align: center;}
+  </style>
+
+
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+    <script type="text/javascript">
+//<![CDATA[
+
+    window.onload=function(){
+      
+$(document).ready(function(){
+
+$('#bgcolor').on('change', function (e) {
+var optionSelected = $("option:selected", this);
+var valueSelected = '#' +this.value;
+
+$("#test").css("background-color", valueSelected);
+$("#test").css("background-image", "url()");
+
+
+});
+});
+
+    }
+            </script>
+
+   <script type="text/javascript">
+       $(document).ready(function(){
+    $('.textb').click(function(){
+        $('#textpop').toggle();
+});
+});
+   </script>
+<script type="text/javascript">
+
+    //window.onload=function(){
+      
+$(document).ready(function(){
+
+$('#txtcolor').on('change', function (e) {
+var optionSelected = $("option:selected", this);
+var valueSelected = '#' +this.value;
+
+$("#textarea").css("color", valueSelected);
+
+});
+});
+
+    //}
+</script>
+    <style type="text/css">
+        .back
+        {
+            height: 738px;
+            width: 100%;
+            background-color: white;
+        }
+
+
+        #text{
+            height: 20px;
+            width: 156px;
+            margin-left: 43%;
+            margin-top: 16%;
+        }
+
+
+        .card{
+            background-color: black;
+            height: 90%;
+            width: 100%;
+            background-image: url('');
+            background-size: 100% 100%;
+        }
+
+
+        #op{
+            height: 39px;
+            width: 110px;
+            margin-left: 92.65%;
+            background-color: white;
+            font-weight: bold;
+        }
+        #scard{
+            height: 72px;
+            width: 84px;
+            font-weight: bold;
+            background-color: white;
+            margin-top: 1px;
+        }
+        #getval{
+            display: none;
+        }
+        #txt{
+            width: 120px;
+            height: 120px;
+            padding: 20px;
+            background-color: aqua;
+            margin: 5px;
+        }
+        #textpop{
+            height: 110px;
+            width: 200px;
+            display: none;
+            background-color: white;
+            margin-top: -188.5px;
+            margin-left: 1143px;
+        }
+        #popbutton{
+            padding-left: 22.5px;
+            margin-left: -3px;
+            padding-top: 10px;
+            position: absolute;
+        }
+        #textarea{
+            resize: none;
+            height: 100%;
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border : none;
+            outline: none;
+            word-break: break-all;
+            white-space: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="back">
+        <div class="card" id="test">
+            <script type="text/javascript">
+                $(function() {
+            var new_offset = {top:30, left:40};
+            //size of textbox 
+            var new_width = 200 ;
+            var new_height = 150;
+            //textbox code
+            var newElement$ = $('<div id="divarea"><textarea id="textarea" placeholder="Drag me to edit"></textarea></div>')
+                                     
+                                     .width(new_width)
+                                     .height(new_height)
+                                     .draggable({
+                                        cancel: "",
+                                        containment: "parent",
+                                        start: function (){
+                                            $('#textarea').focus();
+                                         },
+                                        stop: function (){
+                                            $('#textarea').focus();
+                                         }
+                                     })
+                                    .resizable()
+                                    .css({
+                                            'background'        : 'rgba(255,255,255,0.1)',
+                                            'text-align'        : '',
+                                            'font-size'         : '',
+                                            'word-break'        : 'break-word',
+                                            'white-space'       : 'normal',
+                                            'overflow-wrap'     : 'break-word',
+
+                                     })
+                                    .appendTo('#test')
+                                     .offset(new_offset);
+                                     $("#textarea").keyup(function(){
+                                        $("#divarea").val($(this).val().replace(/[\r\n]/g, "<br />"));
+
+                                     });
+
+});
+                                    function dnldimage() {
+                                            html2canvas([document.getElementById('test')],{
+                                            onrendered: function (canvas) {
+                                                var data = canvas.toDataURL('image/jpeg');
+                                                var im = document.createElement('a');
+                                                im.setAttribute('download' , 'image.jpeg');
+                                                im.setAttribute('id' , 'test1');
+                                                im.setAttribute('href' , data);
+                                                document.body.appendChild(im);
+                                                $('#test1')[0].click();
+                                                document.body.removeChild(im);
+                                    }
+                        });
+                }
+                                    function postimage() {
+                                        html2canvas([document.getElementById('test')],{
+                                            onrendered: function (canvas) {
+                                                var data = canvas.toDataURL('image/jpeg');
+                                                var image = new Image();
+                                                image.src = data;
+                                                var fd = new FormData();
+                                                fd.append("image_jpeg",image.src);
+                                                console.log(fd);
+
+                                                $.ajax({
+                                                    url: "upload.php",
+                                                    type: "POST",
+                                                    data: fd,
+                                                    processData: false,
+                                                    contentType: false,
+                                                    success: function (respond) {
+                                                        alert("You have successfully posted the card.");
+                                                    },
+                                                    error : function(er){
+                                                        console.log(er);
+                                                    }
+                                                });                                    
+                                            }
+                        });
+                                    }
+
+
+                    $(function(){
+                      
+                    $(".bold").click(function() {
+                        $("#textarea").toggleClass("bold");
+                    });
+
+                    $(".italic").click(function() {
+                        $("#textarea").toggleClass("italic");
+                    });
+                    $(".underline").click(function() {
+                        $("#textarea").toggleClass("underline");
+                    });
+                    $(".la").click(function() {
+                        $("#textarea").css("text-align","left");
+                    });
+                    $(".ca").click(function() {
+                        $("#textarea").css("text-align","center");
+                    });
+                    $(".ra").click(function() {
+                        $("#textarea").css("text-align","right");
+                    });
+
+                        });
+
+                    $(function(){
+                    $('.slider').on('change', function () {
+                    var v = $(this).val();
+                    $('#textarea').css('font-size', v + 'px')
+                    });
+                });
+            </script>
+
+                                
+        </div>
+        <div>
+            <label for="getval"><img src="images.png" id="scard"></label><input type="file" id="getval"><script type="text/javascript">
+                
+                document.getElementById('getval').addEventListener('change', readURL, true);
+                    function readURL(){
+                        var file = document.getElementById("getval").files[0];
+                        var reader = new FileReader();
+                        reader.onloadend = function(){
+                            document.getElementById('test').style.backgroundImage = "url(" + reader.result + ")";        
+                        }
+                        if(file){
+                            reader.readAsDataURL(file);
+                        }else{
+                        }
+}
+            </script><input style="width:84px; height: 6px; padding-top: 64.2px;" class="jscolor {width:243, height:150, position:'right',
+borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}" id="bgcolor" name="bgcolor" value="#000000" /><input type="image" src="432_UrbanLightsBlack_1080.jpg" id="scard" onclick="showImage();"><input type="image" src="9977676-old-post-envelope-background.jpg" id="scard" onclick="showImage1();"><input type="image" src="432_UrbanLightsBlack_1080.jpg" id="scard" onclick="showImage2();"><input type="image" src="writer-cover.jpg" id="scard" onclick="showImage3();"><input type="button" id="scard" style="float: right; background: url(post_1257583.png); background-size: 100% 100%;" onclick="postimage();">
+            <script type="text/javascript">
+                function showImage(){
+        document.getElementById('test').setAttribute("style" , "background: url(432_UrbanLightsBlack_1080.jpg); background-size: 100% 100%;");
+        }
+        function showImage1(){
+        document.getElementById('test').setAttribute("style" , "background: url(9977676-old-post-envelope-background.jpg); background-size: 100% 100%;");
+        }
+
+        function showImage2(){
+        document.getElementById('test').setAttribute("style" , "background: url(432_UrbanLightsBlack_1080.jpg); background-size: 100% 100%;");
+        }
+        function showImage3(){
+        document.getElementById('test').setAttribute("style" , "background: url(writer-cover.jpg); background-size: 100% 100%;");
+        }
+            </script><input type="image" src="1.png" id="scard1" alt="download" style="float: right;height: 72px;" onclick="dnldimage();"><input type="image" src="text.jpg" name="text" id="scard" style="float: right;" class="textb">
+            <div id="textpop">
+                <div>
+                    <input style="padding-top: 44px; width: 32%; height: 11%;" class="jscolor {width:243, height:150, position:'right',
+                    borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}" id="txtcolor" name="txtcolor" value="#000000">
+                    <input type="button" class="bold" value="B" id="popbutton" style="margin-left: -2px;" ><input type="button" class="italic" value="I" id="popbutton" style="margin-left: 43.5px;"><input type="button" class="underline" value="U" id="popbutton" style="margin-left: 84px;"><input type="button" class="la" value="L" style="padding-bottom: 0px;padding-top: 12px;margin-left: -1.5px;padding-right: 23.5px;"><input type="button" class="ca" value="C" style="padding-bottom: 0px;padding-top: 12px;margin-left: 4px;padding-right: 17.5px;"><input type="button" class="ra" value="R" style="padding-bottom: 0px;padding-top: 12px;margin-left: 3.5px;padding-right: 22.5px;"><input type="range" min="10" max="50" class="slider" style="width: 195px;margin-top: 10px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
